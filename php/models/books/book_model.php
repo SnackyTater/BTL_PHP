@@ -1,5 +1,6 @@
 <?php 
 require_once('book.php');
+
 class book_model {
 	var $conn;
 	public function __construct() {
@@ -13,7 +14,8 @@ class book_model {
 			#print 'Connect DB OK';
 		}
 	}
-	public function select() {
+
+	public function getAll() {
 		$mySQL = "SELECT * FROM product ORDER BY productid";
 		$result = mysqli_query($this->conn, $mySQL);
 		$products = array();
@@ -39,7 +41,9 @@ class book_model {
 		}
 		return $products;
 	}
-	public function update(product_entity $product) {
+
+	public function updateBook(book $Book) {
+		/*
 		$id = $product->productid;
 		$updates = array();
 		if ($product->title!=null)
@@ -53,7 +57,19 @@ class book_model {
 			$update_sql = implode(',',$updates);
 			$mySQL = "UPDATE product SET {$update_sql} WHERE productid={$id}";
 			$rs_update = mysqli_query($this->conn,$mySQL);
-		}			
+		}*/
+		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
+		mysqli_query($this->conn, $mySQL);	
+	}
+
+	public function createBook(book newBook) {
+		$mySQL = 'insert into book values('.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price')';
+		mysqli_query($this->conn, $mySQL);
+	}
+
+	public function deleteBook($bookID){
+		$mySQL = 'delete from book where id='.$bookID.'';
+		mysqli_query($this->conn, $mySQL);
 	}
 }
 ?>
