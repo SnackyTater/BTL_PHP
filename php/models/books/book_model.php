@@ -28,7 +28,7 @@ class book_model {
 	}
 
 	public function updateBook($Book) {
-		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
+		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.';';
 		mysqli_query($this->conn, $mySQL);	
 	}
 
@@ -37,7 +37,7 @@ class book_model {
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
         $newID=$rowRes[0]+1;
-		$mySQL = 'insert into book values('.$newID.','.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price')';
+		$mySQL = 'insert into book values('.$newID.','.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price.');';
 		mysqli_query($this->conn, $mySQL);
 	}
 

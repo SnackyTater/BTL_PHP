@@ -16,7 +16,7 @@ class product {
 				require_once('/views/book_add.php');
 				break;
 			case 'list':	
-				$products = $this->model->select();							
+				$products = $this->model->getAll();					
 				require_once('/views/book_list.php');
 				break;
 		}
