@@ -21,6 +21,12 @@ class book_model {
 		return $result;
 	}
 
+	public function getBook($bookID) {
+		$mySQL = 'select from book where bookID = '.$bookID.'';
+		$result = mysqli_query($this->conn, $mySQL);
+		return $result;
+	}
+
 	public function updateBook($Book) {
 		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
 		mysqli_query($this->conn, $mySQL);	
