@@ -1,5 +1,5 @@
 <?php 
-require_once('book.php');
+require_once('models/books/book.php');
 
 class book_model {
 	var $conn;
