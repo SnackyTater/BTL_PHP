@@ -15,60 +15,34 @@ class book_model {
 		}
 	}
 
-	public function getAll() {
-		$mySQL = "SELECT * FROM product ORDER BY productid";
+	public function getAllBook() {
+		$mySQL = "SELECT * FROM book ORDER BY bookID";
 		$result = mysqli_query($this->conn, $mySQL);
-		$products = array();
-		if ($result) {
-			while ($row = mysqli_fetch_array($result)) {
-				/*
-				$products[] = new product_entity(
-										$row['productid'],
-										$row['title'],
-										$row['price'],
-										$row['description']
-								);
-				*/
-				$product = new product_entity($row);
-				$product->thuoctinh1 = 'abc';
-				$product->thuoctinh2 = '133';
-				$product->thuoctinh3 = 'ffff';
-				$products[] = $product;
-			}
-		}
-		else {
-			print mysqli_error($this->conn);
-		}
-		return $products;
+		return $result;
 	}
 
-	public function updateBook(book $Book) {
-		/*
-		$id = $product->productid;
-		$updates = array();
-		if ($product->title!=null)
-			$updates[] = " title='{$product->title}'";
-		if ($product->price!=null)
-			$updates[] = " price={$product->title}";
-		if ($product->desciption!=null)
-			$updates[] = " desciption='{$product->desciption}'";
-						
-		if (count($updates)>0) {
-			$update_sql = implode(',',$updates);
-			$mySQL = "UPDATE product SET {$update_sql} WHERE productid={$id}";
-			$rs_update = mysqli_query($this->conn,$mySQL);
-		}*/
-		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
+	public function getBook($bookID) {
+		$mySQL = 'select from book where bookID = '.$bookID.'';
+		$result = mysqli_query($this->conn, $mySQL);
+		return $result;
+	}
+
+	public function updateBook($Book) {
+		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.';';
 		mysqli_query($this->conn, $mySQL);	
 	}
 
-	public function createBook(book newBook) {
-		$mySQL = 'insert into book values('.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price')';
+	public function createBook($newBook) {
+		$getTotal='select count(*) from book';
+        $result=mysqli_query($this->conn,$getTotal);
+        $rowRes=mysqli_fetch_row($result);
+        $newID=$rowRes[0]+1;
+		$mySQL = 'insert into book values('.$newID.','.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price.');';
 		mysqli_query($this->conn, $mySQL);
 	}
 
 	public function deleteBook($bookID){
-		$mySQL = 'delete from book where id='.$bookID.'';
+		$mySQL = 'delete from book where bookID='.$bookID.'';
 		mysqli_query($this->conn, $mySQL);
 	}
 }
