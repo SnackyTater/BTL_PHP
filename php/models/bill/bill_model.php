@@ -16,7 +16,7 @@ class book_model {
 	}
 
 	public function getAll() {
-		$mySQL = "SELECT * FROM product ORDER BY productid";
+		$mySQL = "SELECT * FROM bill ORDER BY billID";
 		$result = mysqli_query($this->conn, $mySQL);
 		$products = array();
 		if ($result) {
@@ -58,17 +58,17 @@ class book_model {
 			$mySQL = "UPDATE product SET {$update_sql} WHERE productid={$id}";
 			$rs_update = mysqli_query($this->conn,$mySQL);
 		}*/
-		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
+		$mySQL = 'update bill set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
 		mysqli_query($this->conn, $mySQL);	
 	}
 
 	public function createBook(book newBook) {
-		$mySQL = 'insert into book values('.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price')';
+		$mySQL = 'insert into bill values('.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price')';
 		mysqli_query($this->conn, $mySQL);
 	}
 
-	public function deleteBook($bookID){
-		$mySQL = 'delete from book where id='.$bookID.'';
+	public function deleteBook($billID){
+		$mySQL = 'delete from bill where id='.$bookID.'';
 		mysqli_query($this->conn, $mySQL);
 	}
 }

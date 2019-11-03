@@ -16,7 +16,7 @@ class book_model {
 	}
 
 	public function getAll() {
-		$mySQL = "SELECT * FROM product ORDER BY productid";
+		$mySQL = "SELECT * FROM book ORDER BY bookID";
 		$result = mysqli_query($this->conn, $mySQL);
 		$products = array();
 		if ($result) {
@@ -43,21 +43,6 @@ class book_model {
 	}
 
 	public function updateBook(book $Book) {
-		/*
-		$id = $product->productid;
-		$updates = array();
-		if ($product->title!=null)
-			$updates[] = " title='{$product->title}'";
-		if ($product->price!=null)
-			$updates[] = " price={$product->title}";
-		if ($product->desciption!=null)
-			$updates[] = " desciption='{$product->desciption}'";
-						
-		if (count($updates)>0) {
-			$update_sql = implode(',',$updates);
-			$mySQL = "UPDATE product SET {$update_sql} WHERE productid={$id}";
-			$rs_update = mysqli_query($this->conn,$mySQL);
-		}*/
 		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.'';
 		mysqli_query($this->conn, $mySQL);	
 	}
@@ -68,7 +53,7 @@ class book_model {
 	}
 
 	public function deleteBook($bookID){
-		$mySQL = 'delete from book where id='.$bookID.'';
+		$mySQL = 'delete from book where bookID='.$bookID.'';
 		mysqli_query($this->conn, $mySQL);
 	}
 }
