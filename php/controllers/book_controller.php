@@ -1,13 +1,14 @@
-<?php 
+<?php
 include_once('models/books/book_model.php');
-class product {
+
+class book_controller{
 	var $model;
 	public function __construct() {
 		$this->model = new book_model();
 	}
+
 	public function run() {
-		#print 'Product Controller';
-		
+		print 'Product Controller';
 		$action = filter_input(INPUT_GET,'action');
 		$action = $action==NULL?'list':$action;
 		
@@ -16,8 +17,8 @@ class product {
 				require_once('/views/book_add.php');
 				break;
 			case 'list':	
-				$products = $this->model->getAll();					
-				require_once('/views/book_list.php');
+				$products = $this->model->getAllBook();					
+				require_once('views/book_list.php');
 				break;
 		}
 	}
