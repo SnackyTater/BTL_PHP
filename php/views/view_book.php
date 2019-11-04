@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 <?php
 include 'css/view_book.css';
@@ -20,3 +21,9 @@ $book = new book_model()->getBook();
 	
 ?>
 <!-- <img src="asset/image/1.jpg"/> -->
+=======
+<?php
+$bookID = filter_input(INPUT_GET,'book');
+echo ($bookID);
+?>
+>>>>>>> fc15d8b6acc5bae92068d869ea9c13b99e73934e
