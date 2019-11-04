@@ -17,3 +17,4 @@
 	print '<p>asfawfawfa</p>'
 ?>
 <p>kjgkhgkj</p>
+<img src="asset/image/1.jpg"/>
