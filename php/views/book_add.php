@@ -1,7 +1,7 @@
 <?php
 require_once('models/books/book_model.php');
-/*
-$data = isset($_POST['NewBook']);
+
+if(isset($_POST['NewBook'])){
 $bookName = $_POST['bookName'];
 $gerne = $_POST['gerne'];
 $author = $_POST['author'];
@@ -9,10 +9,10 @@ $bookDescription = $_POST['bookDescription'];
 $price = $_POST['price'];
 $book = new book_model();
 $book->createBook($bookName, $gerne, $author, $bookDescription, $price);
-*/
+}
 ?>
 
-<form action="add" method="POST">
+<form method="POST">
   Title:<br>
   <input type="text" name="bookName"><br>
   
@@ -28,5 +28,5 @@ $book->createBook($bookName, $gerne, $author, $bookDescription, $price);
   Price:<br>
   <input type="text" name="price"><br>
 
-  <input name = "newBook" type="submit" value="newBook">
+  <input name = "newBook" type="submit" value="Add Book">
 </form>
