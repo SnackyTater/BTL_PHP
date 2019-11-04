@@ -17,3 +17,7 @@ require_once('views/header.php');
 	// }
 	// print '</table>';
 ?>
+	print '<p>asfawfawfa</p>'
+?>
+<p>kjgkhgkj</p>
+<img src="asset/image/1.jpg"/>
