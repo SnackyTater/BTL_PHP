@@ -4,11 +4,6 @@ include 'css/book_list.css';
 ?>
 </style>
 <?php
-require_once('views/header.php');
-	print '<pre>';
-		// print_r($books);
-	print '</pre>';
-	// print '<table border="1">';
 	print '<div class="view-book">';
 	foreach($books as $book) {
 		print '<div class="book-info">';
@@ -31,7 +26,7 @@ require_once('views/header.php');
 		print '</div>';
 
 	}
-	// print '</table>';
+	print '</div>';
 	print '</div>';
 	
 ?>

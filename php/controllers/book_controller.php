@@ -1,6 +1,11 @@
+<?php 
+require_once('views/header.php'); ?>
+<div class="left" style="width:300px; float:left;">
+	<?php require_once('views/left.php')?>
+</div>
+<div class='right'style="width:calc(100%-300px)">
 <?php
 include_once('models/books/book_model.php');
-// require_once('/views/left.php');
 class book_controller{
 	var $model;
 	public function __construct() {
@@ -11,7 +16,7 @@ class book_controller{
 		// print 'Product Controller';
 		$action = filter_input(INPUT_GET,'action');
 		$action = $action==NULL?'list':$action;
-		
+
 		$bookID = filter_input(INPUT_GET,'book');
 		if ($bookID == Null){
 			switch($action) {			
@@ -34,3 +39,4 @@ class book_controller{
 	}
 }
 ?>
+</div>
