@@ -22,9 +22,18 @@ class book_model {
 	}
 
 	public function getBook($bookID) {
-		$mySQL = 'select from book where bookID = '.$bookID.'';
+		$mySQL = 'select * from book where bookID = '.$bookID.'';
 		$result = mysqli_query($this->conn, $mySQL);
-		return $result;
+		$row = mysqli_fetch_assoc($result);
+		$data = new book(
+			$row['bookID'],
+			$row['bookName'],
+			$row['gerne'],
+			$row['author'],
+			$row['bookDescription'],
+			$row['price']
+		);
+		return $data;
 	}
 
 	public function updateBook($Book) {
@@ -32,7 +41,7 @@ class book_model {
 		mysqli_query($this->conn, $mySQL);	
 	}
 
-	public function createBook($newBook) {
+	public function createBook($bookName, $gerne, $author, $description, $price) {
 		$getTotal='select count(*) from book';
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
