@@ -41,7 +41,7 @@ class book_model {
 		mysqli_query($this->conn, $mySQL);	
 	}
 
-	public function createBook($newBook) {
+	public function createBook($bookName, $gerne, $author, $description, $price) {
 		$getTotal='select count(*) from book';
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
