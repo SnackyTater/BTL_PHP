@@ -11,20 +11,7 @@ class book_controller{
 		// print 'Product Controller';
 		$action = filter_input(INPUT_GET,'action');
 		$action = $action==NULL?'list':$action;
-<<<<<<< HEAD
 		
-		switch($action) {			
-			case 'add':
-				require_once('/views/book_add.php');
-				break;
-			case 'list':	
-				$books = $this->model->select();					
-				require_once('views/book_list.php');
-				break;
-			case 'update':
-				require_once('views/book_update.php');
-				break;
-=======
 		$bookID = filter_input(INPUT_GET,'book');
 		if ($bookID == Null){
 			switch($action) {			
@@ -35,10 +22,12 @@ class book_controller{
 					$books = $this->model->select();					
 					require_once('views/book_list.php');
 					break;
+				case 'update':
+					require_once('views/book_update.php');
+					break;
 			}
 		}else{
 			require_once('views/view_book.php');
->>>>>>> fc15d8b6acc5bae92068d869ea9c13b99e73934e
 		}
 
 		
