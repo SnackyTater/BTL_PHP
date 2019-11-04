@@ -1,0 +1,9 @@
+.view-book{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 10px;
+}
+.book-info img{
+    width: 105px;
+    height: 146px;
+}

@@ -1,18 +1,18 @@
 <?php
 class book {
-    var $id;
-	var $name;
+    var $bookID;
+	var $bookName;
 	var $gerne;
 	var $author;
-	var $description;
+	var $bookDescription;
 	var $price;
 	
-	function __construct($id, $name, $gerne, $author, $description, $price) {
-		$this->id = $id;
-		$this->name = $name;
+	function __construct($bookID, $bookName, $gerne, $author, $bookDescription, $price) {
+		$this->bookID = $bookID;
+		$this->bookName = $bookName;
 		$this->gerne = $gerne;
 		$this->author = $author;
-		$this->description = $description;
+		$this->bookDescription = $bookDescription;
 		$this->price = $price;
 	}
 	
