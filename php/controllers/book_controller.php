@@ -20,6 +20,9 @@ class book_controller{
 				$products = $this->model->getAllBook();					
 				require_once('views/book_list.php');
 				break;
+			case 'update':
+				require_once('views/book_update.php');
+				break;
 		}
 	}
 }

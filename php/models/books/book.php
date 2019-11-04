@@ -1,6 +1,6 @@
 <?php
 class book {
-    var $id;
+    var $*id;
 	var $name;
 	var $gerne;
 	var $author;
