@@ -45,5 +45,28 @@ class book_model {
 		$mySQL = 'delete from book where bookID='.$bookID.'';
 		mysqli_query($this->conn, $mySQL);
 	}
+
+	public function select(){
+		$mySQL = "SELECT * FROM book ORDER BY bookID";
+		$result = mysqli_query($this->conn, $mySQL);
+		$books = array();
+		if ($result) {
+			while ($row = mysqli_fetch_array($result)) {
+				
+				$books[] = new book(
+										$row['bookID'],
+										$row['bookName'],
+										$row['gerne'],
+										$row['author'],
+										$row['bookDescription'],
+										$row['price']
+								);
+			}
+		}
+		else {
+			print mysqli_error($this->conn);
+		}
+		return $books;
+	}
 }
 ?>

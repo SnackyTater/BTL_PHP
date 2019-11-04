@@ -8,7 +8,7 @@ class book_controller{
 	}
 
 	public function run() {
-		print 'Product Controller';
+		// print 'Product Controller';
 		$action = filter_input(INPUT_GET,'action');
 		$action = $action==NULL?'list':$action;
 		
@@ -17,7 +17,7 @@ class book_controller{
 				require_once('/views/book_add.php');
 				break;
 			case 'list':	
-				$products = $this->model->getAllBook();					
+				$books = $this->model->select();					
 				require_once('views/book_list.php');
 				break;
 			case 'update':
