@@ -1,4 +1,6 @@
-<?php 
+
+<?php
+require_once('views/header.php');
 	// print '<pre>';
 	// 	#print_r($products);
 	// print '</pre>';
@@ -14,5 +16,4 @@
 	// 	print '</tr>';
 	// }
 	// print '</table>';
-	print '<p>asfawfawfa</p>'
 ?>
