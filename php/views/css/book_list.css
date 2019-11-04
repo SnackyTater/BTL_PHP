@@ -2,6 +2,13 @@
     display: grid;
     grid-template-columns: repeat(4,auto);
     grid-gap: 10px;
+    justify-content: center;
+}
+.book-info{
+    border: 1px solid black;
+    padding: 5px;
+    width: 300px;
+    text-align: center;
 }
 .book-info img{
     width: 105px;
