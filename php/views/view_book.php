@@ -9,7 +9,6 @@ require_once('models/books/book_model.php');
 $getBookID = filter_input(INPUT_GET,'book');
 $book = new book_model();
 $book->getBook($getBookID);
-
 	print '<div class="view-book">';
         print '<img src="asset/img/'.$book->bookID.'.jpg"/>';
         print '<p>'.$book->bookName.'</p>';
