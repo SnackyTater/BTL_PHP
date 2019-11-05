@@ -18,7 +18,7 @@ a{
     grid-row: 1 / 6;
     padding: 20px;
 }
-.create-bill{
+.update-book{
     width: 130px;
     height: 25px;
     border: 1px solid black;
@@ -27,6 +27,6 @@ a{
     border-radius: 5px;
     cursor: pointer;
 }
-.create-bill:hover{
+.update-book:hover{
     background-color: yellow;
 }

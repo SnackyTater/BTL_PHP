@@ -17,7 +17,11 @@ $data = $book->getBook($getBookID);
         print '<p>Price: '.$data->price.'đ</p>';
         print '<p>Decription: '.$data->bookDescription.'</p>';
         print '<a href="?action=update&?book='.$data->bookID.'"><div class="update-book">Sửa sách</div></a>';
-        print '<a href="?action=update&?book='.$data->bookID.'"><div class="create-bill">Đặt mua</div></a>';
+        print '<form method="POST">';
+        print '<input type="text" name="customer-name" placeholder="Customer name">';
+        print '<input type="text" name="customer-address" placeholder="Customer address">';
+        print '<input type="submit" name="newBill" value="Đặt mua">';
+        print '</form>';
 	print '</div>';
 ?>
 
