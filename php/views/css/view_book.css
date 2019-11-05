@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+    color: black;
+}
 .view-book{
     display: grid;
     grid-template-columns: 300px 600px;
@@ -11,6 +15,18 @@
     padding: 10px;
 }
 .book-img{
-    grid-row: 1 / 7;
+    grid-row: 1 / 6;
     padding: 20px;
+}
+.create-bill{
+    width: 130px;
+    height: 25px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.create-bill:hover{
+    background-color: yellow;
 }

@@ -7,9 +7,6 @@ include 'css/book_list.css';
 	print '<div class="view-book">';
 	foreach($books as $book) {
 		print '<div class="book-info">';
-			// print '<p>';
-			// print $book->bookID;
-			// print '</p>';
 			print '<p> <a href="?book='.$book->bookID.'"> Name: ';
 			print $book->bookName;
 			print '</a>';
