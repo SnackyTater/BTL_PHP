@@ -36,9 +36,18 @@ class book_model {
 		return $data;
 	}
 
-	public function updateBook($Book) {
-		$mySQL = 'update book set bookName='.$Book->bookName.', gerne='.$Book->gerne.', author='.$Book->author.', bookDescription'.$Book->bookDescription.', price='.$Book->price.';';
-		mysqli_query($this->conn, $mySQL);	
+	public function updateBook($bookID,$bookName,$gerne,$author,$bookDescription,$price) {
+		$mySQL = "UPDATE book SET bookName='{$bookName}', gerne='{$gerne}',author='{$author}',bookDescription='{$bookDescription}',price='{$price}' WHERE bookID = '{$bookID}'";
+		//   bookDescription="'{$bookDescription}'", price="'{$price}'" 
+		$result = mysqli_query($this->conn, $mySQL);	
+		if ($result)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
 	public function createBook($bookName, $gerne, $author, $bookDescription, $price) {

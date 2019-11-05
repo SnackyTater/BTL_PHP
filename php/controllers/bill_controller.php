@@ -13,9 +13,9 @@ class bill_controller{
 		$action = $action==NULL?'list':$action;
 		
 		switch($action) {			
-			case 'addBill':
-				require_once('/views/bill_add.php');
-				break;
+			// case 'addBill':
+			// 	require_once('/views/bill_add.php');
+			// 	break;
 			case 'listBill':	
 				$products = $this->model->getAllbill();					
 				require_once('views/bill_list.php');
