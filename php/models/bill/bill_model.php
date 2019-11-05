@@ -1,5 +1,5 @@
 <?php 
-
+require_once('bill.php');
 class bill_model {
 	var $conn;
 	public function __construct() {
@@ -43,12 +43,13 @@ class bill_model {
         $rowRes=mysqli_fetch_row($result);
 		$billID=$rowRes[0]+1;
 		$bill = new bill($billID, $bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
-		$mySQL = 'insert into bill values('.$bill->billID.','.$bill->bookID.','.$bill->quantity.','.$bill->customerName.','.$bill->customerAddress.','.$bill->billDate.','.$bill->total.')';
-		mysqli_query($this->conn, $mySQL);
+		$mySQL = "insert into bill values('{$bill->billID}','{$bill->bookID}','{$bill->quantity}','{$bill->customerName}','.$customerAddress.','{$bill->billDate}','{$bill->total}');";
+		$result = mysqli_query($this->conn, $mySQL);
+		print $result;
 	}
 
 	public function deleteBill($billID){
-		$mySQL = 'delete from bill where id='.$bookID.'';
+		$mySQL = "delete from bill where id='{$billID}'";
 		mysqli_query($this->conn, $mySQL);
 	}
 }

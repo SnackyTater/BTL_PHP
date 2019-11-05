@@ -12,16 +12,29 @@ $getBookID = filter_input(INPUT_GET,'book');
 $book = new book_model();
 $data = $book->getBook($getBookID);
 
-$submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
+$submitPOST = isset($_POST['newBill'])?$_POST['newBill']:'';
 if (!empty($submitPOST)) {
         $bookID = $getBookID;
         $quantity = $_POST['quantity'];
-        $customerName = $_POST['customerName'];
-        $customerAddress = $_POST['customerAddress'];
-        $billDate = date('m/d/Y h:i:s');
+        $customerName = $_POST['customer-name'];
+        $customerAddress = $_POST['customer-address'];
+        $billDate = date('Y-m-d h:i:s');
         $total = $quantity * $data->price;
-        $bill_model = new bill_model();
-        $bill_model->createBill($bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
+        /*
+        print $quantity.'<br>';
+        print $bookID.'<br>';
+        print $customerName.'<br>';
+        print $customerAddress.'<br>';
+        print $billDate.'<br>';
+        print $total.'<br>';
+        */
+        print $customerAddress.'<br>';
+        $bill = new bill_model();
+        $result = $bill->createBill($bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
+        print 'bruh';
+}
+else{
+        print 'no bruh';        
 }
 
 	print '<div class="view-book">';
