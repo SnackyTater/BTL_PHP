@@ -28,5 +28,20 @@ class book_model {
 		$mySQL = 'delete from bill where id='.$bookID.';';
 		mysqli_query($this->conn, $mySQL);
 	}
+
+	public function login($userName, $password){
+		$mySQL = 'select userName, password from user where userName='.$userName.';';
+		$result = mysqli_query($this->conn, $mySQL);
+		if($result){
+			$row = mysqli_fetch_assoc($result);
+			if($row['password'] === $password){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
 }
 ?>

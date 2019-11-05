@@ -6,9 +6,37 @@
 <?php
 require_once('views/header.php');
 require_once('models/books/book_model.php');
+require_once('models/bill/bill_model.php');
+
 $getBookID = filter_input(INPUT_GET,'book');
 $book = new book_model();
 $data = $book->getBook($getBookID);
+
+$submitPOST = isset($_POST['newBill'])?$_POST['newBill']:'';
+if (!empty($submitPOST)) {
+        $bookID = $getBookID;
+        $quantity = $_POST['quantity'];
+        $customerName = $_POST['customer-name'];
+        $customerAddress = $_POST['customer-address'];
+        $billDate = date('Y-m-d h:i:s');
+        $total = $quantity * $data->price;
+        /*
+        print $quantity.'<br>';
+        print $bookID.'<br>';
+        print $customerName.'<br>';
+        print $customerAddress.'<br>';
+        print $billDate.'<br>';
+        print $total.'<br>';
+        */
+        print $customerAddress.'<br>';
+        $bill = new bill_model();
+        $result = $bill->createBill($bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
+        print 'bruh';
+}
+else{
+        print 'no bruh';        
+}
+
 	print '<div class="view-book">';
         print '<div class="book-img"><img  src="asset/image/'.$data->bookID.'.jpg"></div>';
         print '<p>Name: '.$data->bookName.'</p>';
