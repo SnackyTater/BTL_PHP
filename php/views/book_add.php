@@ -3,7 +3,13 @@ require_once('models/books/book_model.php');
 require_once('models/books/book.php');
 
   $submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
-	
+  // $targetDir=$_SERVER["DOCUMENT_ROOT"].'/BTL_PHP/php/asset/image/';
+  // $imageFileType = strtolower(pathinfo(basename($_FILES['BookImage']['name']),PATHINFO_EXTENSION));
+  // $book_model = new book_model();
+  // $bookID = $book_model->generateBookID();
+  // $targetFile = $targetDir .$bookID.'.'.$imageFileType;
+  // echo('/'.$_FILES['BookImage']['tmp_name']);
+
 	if (!empty($submitPOST)) {
   $bookName = $_POST['bookName'];
   $gerne = $_POST['gerne'];
@@ -11,7 +17,7 @@ require_once('models/books/book.php');
   $bookDescription = $_POST['bookDescription'];
   $price = $_POST['price'];
   $book_model = new book_model();
-  
+  $bookID = $book_model->generateBookID();
   $check=file_exists($_FILES['BookImage']['tmp_name']);
   if ($check!==false) {
       $result = $book_model->createBook($bookName, $gerne, $author, $bookDescription, $price);
@@ -20,7 +26,7 @@ require_once('models/books/book.php');
       $result=false;
   }
   if ($result==true){
-      $targetDir=$_SERVER["DOCUMENT_ROOT"].'assets/image/';
+      $targetDir=$_SERVER["DOCUMENT_ROOT"].'/BTL_PHP/php/asset/image/';
       $imageFileType = strtolower(pathinfo(basename($_FILES['BookImage']['name']),PATHINFO_EXTENSION));
       $targetFile = $targetDir .$bookID.'.'.$imageFileType;
       $uploadState=1;
@@ -62,7 +68,7 @@ require_once('models/books/book.php');
 }
 ?>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   <p class="add-book"><label>Book Image: </label><br>
   <input class="right" type="file" name="BookImage" value="BookImage">
   <p class="add-book"><label>Title: </label><br>
