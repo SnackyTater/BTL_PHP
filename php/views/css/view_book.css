@@ -5,7 +5,7 @@ a{
 .view-book{
     display: grid;
     grid-template-columns: 300px 600px;
-    grid-template-rows: repeat(4,30px) 300px 30px;
+    grid-template-rows: repeat(4,30px) 300px 50px;
     justify-content: center;
     justify-items: left;
     width: 1000px;
@@ -21,7 +21,7 @@ a{
 .update-book{
     width: 130px;
     height: 25px;
-    border: 1px solid black;
+    border: 1px solid #28a745;
     text-align: center;
     padding: 4px;
     border-radius: 5px;
@@ -29,4 +29,8 @@ a{
 }
 .update-book:hover{
     background-color: yellow;
+}
+.bill-info{
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
