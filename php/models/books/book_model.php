@@ -52,6 +52,14 @@ class book_model {
 		return $result1;
 	}
 
+	public function generateBookID(){
+		$getTotal='select count(*) from book';
+        $result=mysqli_query($this->conn,$getTotal);
+        $rowRes=mysqli_fetch_row($result);
+		$bookID=$rowRes[0]+1;
+		return $bookID;
+	}
+
 	public function deleteBook($bookID){
 		$mySQL = 'delete from book where bookID='.$bookID.'';
 		mysqli_query($this->conn, $mySQL);
