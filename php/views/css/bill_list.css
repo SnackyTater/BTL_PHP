@@ -1,0 +1,26 @@
+/* .container{
+    display: grid;
+    grid-template-columns: 300px calc(100%-300px);
+} */
+a{
+    text-decoration: none;
+}
+.view-bill{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 10px;
+    justify-content: center;
+    position: relative;
+    top:100px;
+}
+.bill-info{
+    border: 1px solid black;
+    padding: 5px;
+    width: 300px;
+    text-align: center;
+    background-color:#ffc107;
+}
+.bill-info img{
+    width: 155px;
+    height: 196px;
+}

@@ -15,26 +15,27 @@ class bill_model {
 	}
 
 	public function getAllBill() {
-		$mySQL = "SELECT * FROM bill ORDER BY bookID";
+		$mySQL = "SELECT * FROM bill ORDER BY billID";
 		$result = mysqli_query($this->conn, $mySQL);
-		$books = array();
+		$bills = array();
 		if ($result) {
 			while ($row = mysqli_fetch_array($result)) {
 				
-				$books[] = new book(
+				$bills[] = new bill(
+										$row['billID'],
 										$row['bookID'],
-										$row['bookName'],
-										$row['gerne'],
-										$row['author'],
-										$row['bookDescription'],
-										$row['price']
+										$row['quantity'],
+										$row['customerName'],
+										$row['customerAddress'],
+										$row['billDate'],
+										$row['total']
 								);
 			}
 		}
 		else {
 			print mysqli_error($this->conn);
 		}
-		return $books;
+		return $bills;
 	}
 
 	public function createBill($bookID, $quantity, $customerName, $customerAddress, $billDate, $total) {
@@ -45,7 +46,9 @@ class bill_model {
 		$bill = new bill($billID, $bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
 		$mySQL = "insert into bill values('{$bill->billID}','{$bill->bookID}','{$bill->quantity}','{$bill->customerName}','.$customerAddress.','{$bill->billDate}','{$bill->total}');";
 		$result = mysqli_query($this->conn, $mySQL);
-		print $result;
+		if($result===true){
+			print '<p style="font-size: 25px;color: #007bff;text-align: center;">Created Bill Success</p>';
+		};
 	}
 
 	public function deleteBill($billID){

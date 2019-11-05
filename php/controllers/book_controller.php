@@ -9,10 +9,13 @@ require_once('views/header.php');
 	<div class='right'style="position:absolute;top:50px;"> 
 	<?php
 	include_once('models/books/book_model.php');
+	include_once('models/bills/bill_model.php');
 	class book_controller{
 		var $model;
+		var $billModel;
 		public function __construct() {
 			$this->model = new book_model();
+			$this->billModel = new bill_model();
 		}
 
 		public function run() {
@@ -32,6 +35,10 @@ require_once('views/header.php');
 						break;
 					case 'update':
 						require_once('views/book_update.php');
+						break;
+					case 'listBill':	
+						$bills = $this->billModel->getAllbill();					
+						require_once('views/bill_list.php');
 						break;
 				}
 			}else{

@@ -4,11 +4,11 @@
 ?>
 </style>
 <?php
- $controller_name = 'bill_controller';
- include_once('controllers/'.$controller_name.'.php');
+//  $controller_name = 'bill_controller';
+//  include_once('controllers/'.$controller_name.'.php');
 
- $controller = new $controller_name();
- $controller->run();
+//  $controller = new $controller_name();
+//  $controller->run();
 ?>
 <div class="left-router">
     <a href="?action=add"><div class="router">Add Book</div></a>
