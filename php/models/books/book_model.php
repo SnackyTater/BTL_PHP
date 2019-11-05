@@ -30,7 +30,7 @@ class book_model {
 			$row['bookName'],
 			$row['gerne'],
 			$row['author'],
-			$row['bookbookDescription'],
+			$row['bookDescription'],
 			$row['price']
 		);
 		return $data;

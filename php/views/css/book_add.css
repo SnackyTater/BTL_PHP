@@ -1,0 +1,25 @@
+.check-result{
+    font-size: 25px;
+    color: #007bff;
+    text-align: center;
+}
+.add-book-form{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2,300px);
+    width: 800px;
+    margin:0 auto;
+    background-color: #ffc107;
+    padding: 30px;
+    border: 1px solid #637466;
+}
+.add-book-header{
+    grid-column: 1 / 3;
+    justify-self: center;
+    color: #A50A02;
+}
+.add-submit{
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+}

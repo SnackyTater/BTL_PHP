@@ -16,8 +16,8 @@ $data = $book->getBook($getBookID);
         print '<p>Author: '.$data->author.'</p>';
         print '<p>Price: '.$data->price.'đ</p>';
         print '<p>Decription: '.$data->bookDescription.'</p>';
-        
-        print '<a>Đặt mua</a>';
+        print '<a href="?action=update&?book='.$data->bookID.'"><div class="update-book">Sửa sách</div></a>';
+        print '<a href="?action=update&?book='.$data->bookID.'"><div class="create-bill">Đặt mua</div></a>';
 	print '</div>';
 ?>
 

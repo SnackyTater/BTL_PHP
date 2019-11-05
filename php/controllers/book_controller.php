@@ -3,7 +3,7 @@
 require_once('views/header.php'); 
 ?>
 <div class="main" style="position:relative;top:100px;" >
-	<div class="left" style="width:100%;border:1px solid black;background-color:#108709;margin-bottom:150px;">
+	<div class="left" style="width:100%;border:1px solid #637466;background-color:#108709;margin-bottom:150px;">
 		<?php require_once('views/left.php')?>
 	</div>
 	<div class='right'style="position:absolute;top:50px;"> 
