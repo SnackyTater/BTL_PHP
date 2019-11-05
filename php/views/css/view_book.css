@@ -1,8 +1,14 @@
 .view-book{
     display: grid;
     grid-template-columns: 300px 600px;
-    grid-template-rows: repeat(4,50px) 300px 100px;
+    grid-template-rows: repeat(4,30px) 300px 30px;
     justify-content: center;
+    justify-items: left;
+    width: 1000px;
+    background-color: #ffc107;
+    margin: 0 auto;
+    border: 1px solid #28a745;
+    padding: 10px;
 }
 .book-img{
     grid-row: 1 / 7;
