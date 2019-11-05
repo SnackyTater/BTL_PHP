@@ -13,16 +13,13 @@ class bill_controller{
 		$action = $action==NULL?'list':$action;
 		
 		switch($action) {			
-			case 'add':
+			case 'addBill':
 				require_once('/views/bill_add.php');
 				break;
-			case 'list':	
+			case 'listBill':	
 				$products = $this->model->getAllbill();					
 				require_once('views/bill_list.php');
 				break;
-			case 'update':
-                require_once('views/bill_update.php');
-                break;
 		}
 	}
 }

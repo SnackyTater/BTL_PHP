@@ -16,17 +16,35 @@ class book_model {
 	}
 
 	public function getAllBill() {
-		$mySQL = "SELECT * FROM bill ORDER BY billID";
+		$mySQL = "SELECT * FROM bill ORDER BY bookID";
 		$result = mysqli_query($this->conn, $mySQL);
-		return $result;
+		$books = array();
+		if ($result) {
+			while ($row = mysqli_fetch_array($result)) {
+				
+				$books[] = new book(
+										$row['bookID'],
+										$row['bookName'],
+										$row['gerne'],
+										$row['author'],
+										$row['bookDescription'],
+										$row['price']
+								);
+			}
+		}
+		else {
+			print mysqli_error($this->conn);
+		}
+		return $books;
 	}
 
-	public function createBill($newBill) {
+	public function createBill($bookID, $quantity, $customerName, $customerAddress, $billDate, $total) {
 		$getTotal='select count(*) from bill';
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
-        $newID=$rowRes[0]+1;
-		$mySQL = 'insert into bill values('.$newID.','.$newBill->quantity.','.$newBill->customerName.','.$newBill->customerAddress.','.$newBill->billDate.','.$newBill->total')';
+		$billID=$rowRes[0]+1;
+		$bill = new bill($billID, $bookID, $quantity, $customerName, $customerAddress, $billDate, $total);
+		$mySQL = 'insert into bill values('.$bill->billID.','.$bill->bookID.','.$bill->quantity.','.$bill->customerName.','.$bill->customerAddress.','.$bill->billDate.','.$bill->total')';
 		mysqli_query($this->conn, $mySQL);
 	}
 
