@@ -2,7 +2,7 @@
 require_once('models/books/book_model.php');
 require_once('models/books/book.php');
 
-$submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
+  $submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
 	
 	if (!empty($submitPOST)) {
   $bookName = $_POST['bookName'];
@@ -21,20 +21,22 @@ $submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
 ?>
 
 <form method="POST">
-  Title:<br>
-  <input type="text" name="bookName"><br>
+  <p class="add-book"><label>Book Image: </label><br>
+  <input class="right" type="file" name="BookImage" value="BookImage">
+  <p class="add-book"><label>Title: </label><br>
+  <input type="text" name="bookName" placeholder="Book Name"><br>
   
-  Gerne:<br>
-  <input type="text" name="gerne"><br>
+  <p class="add-book"><label>Gerne: </label><br>
+  <input type="text" name="gerne" placeholder="Gerne"><br>
   
-  Author:<br>
-  <input type="text" name="author"><br>
+  <p class="add-book"><label>Author: </label><br>
+  <input type="text" name="author" placeholder="Author"><br>
   
-  Book Description:<br>
-  <input type="text" name="bookDescription"><br>
+  <p class="add-book"><label>Book Description: </label><br>
+  <input type="text" name="bookDescription" placeholder="Decription"><br>
 
-  Price:<br>
-  <input type="number" name="price"><br>
+  <p class="add-book"><label>Price: </label><br>
+  <input type="number" name="price" placeholder="Price"><br>
 
   <input name = "newBook" type="submit" value="Add Book">
 </form>
