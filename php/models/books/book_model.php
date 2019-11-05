@@ -30,23 +30,23 @@ class book_model {
 			$row['bookName'],
 			$row['gerne'],
 			$row['author'],
-			$row['bookDescription'],
+			$row['bookbookDescription'],
 			$row['price']
 		);
 		return $data;
 	}
 
 	public function updateBook($Book) {
-		$mySQL = 'update book set name='.$Book->name.', gerne='.$Book->gerne.', author='.$Book->author.', description'.$Book->description.', price='.$Book->price.';';
+		$mySQL = 'update book set bookName='.$Book->bookName.', gerne='.$Book->gerne.', author='.$Book->author.', bookDescription'.$Book->bookDescription.', price='.$Book->price.';';
 		mysqli_query($this->conn, $mySQL);	
 	}
 
-	public function createBook($bookName, $gerne, $author, $description, $price) {
+	public function createBook($bookName, $gerne, $author, $bookDescription, $price) {
 		$getTotal='select count(*) from book';
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
-        $newID=$rowRes[0]+1;
-		$mySQL = 'insert into book values('.$newID.','.$newBook->name.','.$newBook->gerne.','.$newBook->author.','.$newBook->description.','.$newBook->price.');';
+        $bookID=$rowRes[0]+1;
+		$mySQL = 'insert into book values('.$bookID.','.$newBook->bookName.','.$newBook->gerne.','.$newBook->author.','.$newBook->bookDescription.','.$newBook->price.');';
 		mysqli_query($this->conn, $mySQL);
 	}
 
