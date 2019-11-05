@@ -11,49 +11,55 @@ require_once('models/books/book.php');
   $bookDescription = $_POST['bookDescription'];
   $price = $_POST['price'];
   $book_model = new book_model();
-  $result = $book_model->createBook($bookName, $gerne, $author, $bookDescription, $price);
   
   $check=file_exists($_FILES['BookImage']['tmp_name']);
   if ($check!==false) {
-    $book_model->createBook($bookName, $gerne, $author, $bookDescription, $price);
+      $result = $book_model->createBook($bookName, $gerne, $author, $bookDescription, $price);
   }
   else{
-    $result=false;
+      $result=false;
   }
   if ($result==true){
-    $targetDir=$_SERVER["DOCUMENT_ROOT"].'asset/image/';
-    $imageFileType = strtolower(pathinfo(basename($_FILES['BookImage']['name']),PATHINFO_EXTENSION));
-    $targetFile = $targetDir .$bookID.'.'.$imageFileType;
-    $uploadState=1;
-    $check=getimagesize($_FILES['BookImage']['tmp_name']);
-    if ($check!==false){
+      $targetDir=$_SERVER["DOCUMENT_ROOT"].'assets/image/';
+      $imageFileType = strtolower(pathinfo(basename($_FILES['BookImage']['name']),PATHINFO_EXTENSION));
+      $targetFile = $targetDir .$bookID.'.'.$imageFileType;
       $uploadState=1;
-    }else{
-      $uploadState=0;
-    }
-     //Check if file is exist
-                if (file_exists($targetFile)){
-                    $uploadState=0;
-                }
-                //Check file extension
-                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif" ) {
-                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                    $uploadState = 0;
-                }
-                $targetFile = $targetDir .$bookID.'.jpg';
-                if ($uploadState!==0)
-                {
-                    move_uploaded_file($_FILES['BookImage']['tmp_name'],$targetFile);
-                    echo '<p style="width: 600px;margin: 0 auto;"><text style="margin-left: 36%">Add book sucessful</text></p>';
-                }
-            }
-            else
-            {
-                echo '<p style="width: 600px;margin: 0 auto;"><text style="margin-left: 33%">Failed to submit new book</text></p>';
-          }
-      
-    }
+      $check=getimagesize($_FILES['BookImage']['tmp_name']);
+      if ($check!==false)
+      {
+          $uploadState=1;
+      }
+      else
+      {
+          $uploadState=0;
+      }
+      //Check if file is exist
+      if (file_exists($targetFile)){
+          $uploadState=0;
+      }
+      //Check file extension
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+          && $imageFileType != "gif" ) {
+          echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+          $uploadState = 0;
+      }
+      $targetFile = $targetDir .$bookID.'.jpg';
+      if ($uploadState!==0)
+      {
+          move_uploaded_file($_FILES['BookImage']['tmp_name'],$targetFile);
+          echo '<p style="width: 600px;margin: 0 auto;"><text style="margin-left: 36%">Add book sucessful</text></p>';
+      }
+  }
+  else
+  {
+      echo '<p style="width: 600px;margin: 0 auto;"><text style="margin-left: 33%">Failed to submit new book</text></p>';
+  }
+  // if ($result === true){
+  //   echo "Success";
+  // }else{
+  //   echo "Fail";
+  // }
+}
 ?>
 
 <form method="POST">
