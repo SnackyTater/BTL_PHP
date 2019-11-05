@@ -1,15 +1,22 @@
 <?php
 require_once('models/books/book_model.php');
+require_once('models/books/book.php');
 
-if(isset($_POST['NewBook'])){
-$bookName = $_POST['bookName'];
-$gerne = $_POST['gerne'];
-$author = $_POST['author'];
-$bookDescription = $_POST['bookDescription'];
-$price = $_POST['price'];
-$book = new book_model();
-$book->createBook($bookName, $gerne, $author, $bookDescription, $price);
-
+$submitPOST = isset($_POST['newBook'])?$_POST['newBook']:'';
+	
+	if (!empty($submitPOST)) {
+  $bookName = $_POST['bookName'];
+  $gerne = $_POST['gerne'];
+  $author = $_POST['author'];
+  $bookDescription = $_POST['bookDescription'];
+  $price = $_POST['price'];
+  $book_model = new book_model();
+  $result = $book_model->createBook($bookName, $gerne, $author, $bookDescription, $price);
+  if ($result === true){
+    echo "Success";
+  }else{
+    echo "Fail";
+  }
 }
 ?>
 
@@ -27,7 +34,7 @@ $book->createBook($bookName, $gerne, $author, $bookDescription, $price);
   <input type="text" name="bookDescription"><br>
 
   Price:<br>
-  <input type="text" name="price"><br>
+  <input type="number" name="price"><br>
 
   <input name = "newBook" type="submit" value="Add Book">
 </form>

@@ -45,9 +45,11 @@ class book_model {
 		$getTotal='select count(*) from book';
         $result=mysqli_query($this->conn,$getTotal);
         $rowRes=mysqli_fetch_row($result);
-        $bookID=$rowRes[0]+1;
-		$mySQL = 'insert into book values('.$bookID.','.$newBook->bookName.','.$newBook->gerne.','.$newBook->author.','.$newBook->bookDescription.','.$newBook->price.');';
-		mysqli_query($this->conn, $mySQL);
+		$bookID=$rowRes[0]+1;
+		$book = new book($bookID,$bookName, $gerne, $author, $bookDescription, $price);
+		$mySQL = "INSERT INTO book(bookID,bookName,gerne,author,bookDescription,price) values('{$book->bookID}','{$book->bookName}','{$book->gerne}','{$book->author}','{$book->bookDescription}','{$book->price}');";
+		$result1=mysqli_query($this->conn, $mySQL);
+		return $result1;
 	}
 
 	public function deleteBook($bookID){
