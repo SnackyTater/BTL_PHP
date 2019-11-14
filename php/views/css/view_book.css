@@ -18,6 +18,10 @@ a{
     grid-row: 1 / 6;
     padding: 20px;
 }
+.book-img img{
+    width: 230px;
+    height: 310px;
+}
 .update-book{
     width: 130px;
     height: 25px;

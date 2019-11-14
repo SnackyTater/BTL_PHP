@@ -13,6 +13,7 @@ class bill {
 		$this->bookID = $bookID;
 		$this->quantity = $quantity;
 		$this->customerName = $customerName;
+		$this->customerAddress = $customerAddress;
 		$this->billDate = $billDate;
 		$this->total = $total;
 	}
